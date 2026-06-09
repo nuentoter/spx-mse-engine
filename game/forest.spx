@@ -1,1 +1,15 @@
+Σ forest {
 
+    ⬢ player {
+        health = 10
+        x = 2
+        y = 2
+    }
+
+    ⬢ wolf {
+        health = 5
+        x = 4
+        y = 2
+    }
+
+}
