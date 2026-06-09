@@ -12,27 +12,31 @@ def move_toward(a, b):
         a["y"] -= 1
 
 
-def apply_behavior(name, world):
-    entity = world[name]
+def execute_action(action, world, entity_name):
+    entity = world[entity_name]
 
-    if "behavior" not in entity:
-        return
+    if action == "print state":
+        print(f"[STATE] {entity_name}: {entity}")
 
-    behavior = entity["behavior"]
+    elif action.startswith("chase"):
+        _, target_name = action.split(" ", 1)
+        target = world.get(target_name)
 
-    if behavior == "chase_player":
-        player = world.get("player")
-        if player:
-            move_toward(entity, player)
+        if target:
+            move_toward(entity, target)
 
 
 def tick(world):
     print("\n--- TICK ---")
 
-    # run behaviors
-    for name in world.keys():
-        apply_behavior(name, world)
+    for name, entity in world.items():
+        behavior = entity.get("behavior", [])
 
-    # print world state
+        if isinstance(behavior, str):
+            behavior = [behavior]
+
+        for action in behavior:
+            execute_action(action, world, name)
+
     for name, data in world.items():
         print(f"{name}: {data}")
