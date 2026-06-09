@@ -10,6 +10,8 @@
         health = 5
         x = 4
         y = 2
+
+        behavior = chase_player
     }
 
 }
