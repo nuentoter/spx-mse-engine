@@ -12,7 +12,21 @@ class Runtime:
         self.render()
 
     def update_world(self):
-        pass
+        player = self.entities.get("player")
+    wolf = self.entities.get("wolf")
+
+    if not player or not wolf:
+        return
+
+    if wolf["x"] > player["x"]:
+        wolf["x"] -= 1
+    elif wolf["x"] < player["x"]:
+        wolf["x"] += 1
+
+    if wolf["y"] > player["y"]:
+        wolf["y"] -= 1
+    elif wolf["y"] < player["y"]:
+        wolf["y"] += 1
 
     def render(self):
         for name, values in self.entities.items():
