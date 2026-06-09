@@ -11,7 +11,10 @@
         x = 4
         y = 2
 
-        behavior = chase_player
+        behavior = [
+        chase player,
+        print state
+]
     }
 
 }
