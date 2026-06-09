@@ -6,15 +6,15 @@
         y = 2
     }
 
-    ⬢ wolf {
-        health = 5
-        x = 4
-        y = 2
+⬢ wolf {
+    health = 5
+    x = 4
+    y = 2
 
-        behavior = [
-        chase player,
-        print state
-]
-    }
+    behavior = [
+        if near player -> chase player,
+        else -> wander
+    ]
+}
 
 }
